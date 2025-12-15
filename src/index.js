@@ -10,7 +10,7 @@ const scrapeJobs = require("./scraper");
 
 (async () => {
   // Launch browser
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     storageState: "data/linkedin-session.json", // Use your saved LinkedIn session
   });
@@ -38,13 +38,19 @@ const scrapeJobs = require("./scraper");
     console.log("❌", jobs.error);
   } else {
     console.log(`🟢 Direct job cards: ${jobs.total}`);
-    jobs.jobs.forEach((job, i) => {
-      console.log(
-        `[${i + 1}] ${job.title || "(no title)"} | ${job.company || ""} | ${
-          job.location || ""
-        }`
-      );
-      if (job.details) console.log(`     Details: ${job.details}`);
+    jobs.jobs.forEach((job) => {
+      console.log(`[${job.index}]`);
+      console.log(`jobId        : ${job.jobId}`);
+      console.log(`title        : ${job.title}`);
+      console.log(`verified     : ${job.verified}`);
+      console.log(`company      : ${job.company}`);
+      console.log(`location     : ${job.location}`);
+      console.log(`remote       : ${job.remote}`);
+      console.log(`promoted     : ${job.promoted}`);
+      console.log(`viewed       : ${job.viewed}`);
+      console.log(`easyApply    : ${job.easyApply}`);
+      console.log(`alumInsight  : ${job.alumInsight}`);
+      console.log(`url          : ${job.url}`);
       console.log("--------------------------------------------------");
     });
   }

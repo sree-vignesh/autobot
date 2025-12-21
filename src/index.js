@@ -16,11 +16,16 @@ const scrapeJobs = require("./scraper");
   });
   const page = await context.newPage();
 
+  
+  const keyword = "developer intern";
+  const encodedKeyword = encodeURIComponent(keyword);
+
+
   // Navigate to LinkedIn job search page
   await page.goto(
-    "https://www.linkedin.com/jobs/search/?currentJobId=4343791315&distance=25&f_E=1%2C2&f_TPR=r36000&geoId=106888327&keywords=developer%20intern&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R",
-    { waitUntil: "domcontentloaded" }
-  );
+  `https://www.linkedin.com/jobs/search/?distance=25&f_E=1%2C2&f_TPR=r36000&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R`,
+  { waitUntil: "domcontentloaded" }
+);
 
   // Wait for jobs to load
   await page.waitForSelector('a[href*="/jobs/view/"]', { timeout: 20000 });

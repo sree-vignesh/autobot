@@ -55,7 +55,11 @@ async function scrapeJobs(page) {
 
         const title = link?.innerText?.trim().split("\n")[0] || null;
 
-        const company = li.querySelector("h4 span")?.innerText?.trim() || null;
+        // const company = li.querySelector("h4 span")?.innerText?.trim() || null;
+        const company =
+          li
+            .querySelector(".artdeco-entity-lockup__subtitle span")
+            ?.innerText?.trim() || null;
 
         const location =
           li

@@ -17,7 +17,7 @@ const scrapeJobs = require("./scraper");
   });
   const page = await context.newPage();
 
-  const keyword = "";
+  const keyword = "developer";
   const encodedKeyword = encodeURIComponent(keyword);
   const baseUrl = `https://www.linkedin.com/jobs/search/?distance=100&f_E=1%2C2&f_TPR=r3600&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R&f_WT=1`;
 

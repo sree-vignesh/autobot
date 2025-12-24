@@ -17,9 +17,9 @@ const scrapeJobs = require("./scraper");
   });
   const page = await context.newPage();
 
-  const keyword = "developer intern";
+  const keyword = "developer";
   const encodedKeyword = encodeURIComponent(keyword);
-  const baseUrl = `https://www.linkedin.com/jobs/search/?distance=25&f_E=1%2C2&f_TPR=r36000&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R`;
+  const baseUrl = `https://www.linkedin.com/jobs/search/?distance=100&f_E=1%2C2&f_TPR=r3600&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R&f_WT=1`;
 
   // Navigate to LinkedIn job search page
   await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
@@ -98,21 +98,21 @@ const scrapeJobs = require("./scraper");
   console.log(`📊 FINAL RESULTS: ${allJobs.length} jobs extracted`);
   console.log("=".repeat(50) + "\n");
 
-  allJobs.forEach((job, index) => {
-    console.log(`[${index + 1}]`);
-    console.log(`jobId        : ${job.jobId}`);
-    console.log(`title        : ${job.title}`);
-    console.log(`verified     : ${job.verified}`);
-    console.log(`company      : ${job.company}`);
-    console.log(`location     : ${job.location}`);
-    console.log(`remote       : ${job.remote}`);
-    console.log(`promoted     : ${job.promoted}`);
-    console.log(`viewed       : ${job.viewed}`);
-    console.log(`easyApply    : ${job.easyApply}`);
-    console.log(`alumInsight  : ${job.alumInsight}`);
-    console.log(`url          : ${job.url}`);
-    console.log("--------------------------------------------------");
-  });
+  // allJobs.forEach((job, index) => {
+  //   console.log(`[${index + 1}]`);
+  //   console.log(`jobId        : ${job.jobId}`);
+  //   console.log(`title        : ${job.title}`);
+  //   console.log(`verified     : ${job.verified}`);
+  //   console.log(`company      : ${job.company}`);
+  //   console.log(`location     : ${job.location}`);
+  //   console.log(`remote       : ${job.remote}`);
+  //   console.log(`promoted     : ${job.promoted}`);
+  //   console.log(`viewed       : ${job.viewed}`);
+  //   console.log(`easyApply    : ${job.easyApply}`);
+  //   console.log(`alumInsight  : ${job.alumInsight}`);
+  //   console.log(`url          : ${job.url}`);
+  //   console.log("--------------------------------------------------");
+  // });
 
   // Create extracted directory if it doesn't exist
   const extractedDir = path.join(__dirname, "../Extracted");

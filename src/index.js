@@ -19,7 +19,7 @@ const scrapeJobs = require("./scraper");
 
   const keyword = "developer intern";
   const encodedKeyword = encodeURIComponent(keyword);
-  const baseUrl = `https://www.linkedin.com/jobs/search/?distance=25&f_E=1%2C2&f_TPR=r36000&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R`;
+  const baseUrl = `https://www.linkedin.com/jobs/search/?distance=100&f_E=1%2C2&f_TPR=r3600&geoId=106888327&keywords=${encodedKeyword}&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R&f_WT=1`;
 
   // Navigate to LinkedIn job search page
   await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
